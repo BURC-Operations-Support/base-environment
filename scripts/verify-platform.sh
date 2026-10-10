@@ -75,8 +75,34 @@ expected_uv="0.12.19"
 actual_uv="$(uv self version --short)"
 
 if [[ "$actual_uv" == "$expected_uv" ]]; then
-    echo -e "${GREEN}[PASS] uv ${expected_uv} confirmed.${NC}"
+    echo -e "${GREEN}[PASS]${NC} uv ${expected_uv} confirmed."
 else
     echo -e "${RED}[FAIL] expected uv ${expected_uv}, got ${actual_uv}${NC}."
     exit 1
 fi
+
+# Verify ruff version
+expected_ruff="ruff 0.16.9"
+actual_ruff="$(ruff --version)"
+
+if [[ "$actual_ruff" == "$expected_ruff" ]]; then
+    echo -e "${GREEN}[PASS]${NC} ${expected_ruff} confirmed."
+else 
+    echo -e "${RED}[FAIL] expected ${expected_ruff}, got ${actual_ruff}${NC}."
+    exit 1
+fi
+
+# Verify pyright version
+expected_pyright="pyright 1.1.414"
+actual_pyright="$(pyright --version)"
+
+if [[  "$actual_pyright" == "$expected_pyright" ]]; then
+    echo -e "${GREEN}[PASS]${NC} ${expected_pyright} confirmed."
+else 
+    echo -e "${RED}[FAIL] expected ${expected_pyright}, got ${actual_pyright}${NC}."
+    exit 1
+fi 
+
+# 
+
+exit -1

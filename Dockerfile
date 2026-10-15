@@ -1,7 +1,6 @@
 # syntax=docker/dockerfile:1
 
-# NEED TO UPDATE TO LYRICAL
-FROM ros:jazzy-ros-base-noble
+FROM ros:lyrical-ros-base-resolute
 
 SHELL ["/bin/bash", "-c"]
 
@@ -26,6 +25,10 @@ RUN apt-get update && \
         clang-tidy-18 \
         gdb \
     && rm -rf /var/lib/apt/lists/*
+
+# Next item: Pytest versioning
+# Nothing actually happens until you've figured out the deployment model and build checker, though
+# Need high-level CMBE architecture first 
 
 RUN /usr/local/bin/verify-platform.sh
 
